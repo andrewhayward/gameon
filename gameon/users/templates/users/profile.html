@@ -21,23 +21,23 @@
                 {% endif %}
             </aside>
             <div class="main-col">
-            {% if entries %}
-            <ol class="entries cf">
-                {% for sub in entries %}
-                <li>
-                    <a href="{{ url('submissions.entry_single', slug=sub.slug) }}">
-                        <span class="frame"><img src="{{ sub.get_image_src() }}" width="180" height="102" alt="" /></span>
-                        {{ sub.title }}
-                    </a>
-                    {% if sub.editable_by(user=request.user) and request.challenge.is_open() %}
-                        <a class="cta whimper" href="{{ url('submissions.entry_edit', slug=sub.slug) }}">Edit your game</a>
-                    {% endif %}
-                </li>
-                {% endfor %}
-            </ol>
+                {% if entries %}
+                    <ol class="entries cf">
+                        {% for sub in entries %}
+                        <li>
+                            <a href="{{ url('submissions.entry_single', slug=sub.slug) }}">
+                                <span class="frame"><img src="{{ sub.get_image_src() }}" width="180" height="102" alt="" /></span>
+                                {{ sub.title }}
+                            </a>
+                            {% if sub.editable_by(user=request.user) and request.challenge.is_open() %}
+                                <a class="cta whimper" href="{{ url('submissions.entry_edit', slug=sub.slug) }}">Edit your game</a>
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ol>
+                {% endif %}
             </div>
         </div>
     </div>
 </section>
-{% endif %}
 {% endblock %}
